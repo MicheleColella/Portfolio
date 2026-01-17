@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 98%;
+  }
+
+  * {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000; 
+}
+::-webkit-scrollbar-thumb {
+  background: #333; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}

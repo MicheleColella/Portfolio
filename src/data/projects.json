@@ -1,0 +1,986 @@
+[
+    {
+        "id": 1,
+        "title": {
+            "it": "Prison Protocol",
+            "en": "Prison Protocol"
+        },
+        "description": {
+            "it": "Esperienza duale: gestisci la tua cella in 3D e affronta sessioni FPS roguelike su un PC in-game.",
+            "en": "Dual experience: manage your 3D cell and engage in roguelike FPS sessions on an in-game PC."
+        },
+        "longDescription": {
+            "it": "**Prison Protocol** propone un'esperienza di gioco strutturata su due livelli distinti. Il giocatore interpreta un detenuto costretto a seguire una rigida routine, muovendosi tra la gestione della propria cella e un mondo virtuale accessibile tramite un vecchio PC presente nell'ambiente di gioco.\n\n## Struttura del Gameplay\n\n### Fase Cella\n- **Esplorazione 3D:** Ambienti atmosferici da esplorare, con oggetti interattivi e dettagli narrativi nascosti.\n- **Gestione della routine:** Attività quotidiane che influenzano la progressione e le opzioni disponibili.\n\n### Fase FPS Roguelike\n- **Mappe procedurali:** Ogni sessione genera layout diversi con nemici e loot casuali.\n- **Progressione a rischio:** Sistema di permadeath con ricompense proporzionate al rischio.\n\n### Narrazione Ambientale\nLa storia si svela attraverso documenti, oggetti e dettagli visivi disseminati nell'ambiente.",
+            "en": "**Prison Protocol** offers a gameplay experience structured on two distinct levels. The player assumes the role of an inmate forced to follow a strict routine, alternating between cell management and a virtual world accessible through an old PC within the game environment.\n\n## Gameplay Structure\n\n### Cell Phase\n- **3D Exploration:** Atmospheric environments to explore, featuring interactive objects and hidden narrative details.\n- **Routine management:** Daily activities that influence progression and available options.\n\n### Roguelike FPS Phase\n- **Procedural maps:** Each session generates different layouts with randomized enemies and loot.\n- **Risk-based progression:** Permadeath system with rewards proportional to the challenge.\n\n### Environmental Storytelling\nThe story unfolds through documents, objects, and visual details scattered throughout the environment."
+        },
+        "categories": [
+            "Unity",
+            "Blender"
+        ],
+        "tags": [
+            "Unity",
+            "C#",
+            "Game Design",
+            "3D Modeling"
+        ],
+        "image": "projects/prison_protocol/prison_protocol_1.png",
+        "gitLink": "",
+        "liveLink": "",
+        "featured": true,
+        "sortDate": "2025-12-15",
+        "media": [
+            {
+                "type": "video",
+                "src": "videos/prison_protocol_gameplay.mp4",
+                "duration": 5000,
+                "volume": 0.3
+            },
+            {
+                "type": "image",
+                "src": "projects/prison_protocol/prison_protocol_1.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/prison_protocol/prison_protocol_2.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/prison_protocol/prison_protocol_3.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/prison_protocol/prison_protocol_4.png",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": {
+            "it": "SoundSculpt VR",
+            "en": "SoundSculpt VR"
+        },
+        "description": {
+            "it": "Puzzle game VR che fonde manipolazione spaziale e composizione musicale su una griglia 3D.",
+            "en": "VR puzzle game blending spatial manipulation and musical composition on a 3D grid."
+        },
+        "longDescription": {
+            "it": "**SoundSculpt VR** è un puzzle game immersivo che esplora l'intersezione tra spazio tridimensionale e composizione musicale.\n\n## Meccaniche di Gioco\n\n### Puzzle Musicali\n- **Trasformazione oggetti:** Gli elementi ambientali vengono convertiti in note musicali attraverso interazioni fisiche.\n- **Griglia 3D:** Le note devono essere posizionate strategicamente nello spazio per ricreare spartiti complessi.\n\n### Esperienza Sinestetica\n- **Feedback audiovisivo:** Ogni interazione genera risposte sia visive che sonore, creando un legame diretto tra azione e risultato.\n- **Ambiente reattivo:** Lo spazio VR risponde dinamicamente alle composizioni create dal giocatore.",
+            "en": "**SoundSculpt VR** is an immersive puzzle game that explores the intersection between three-dimensional space and musical composition.\n\n## Game Mechanics\n\n### Musical Puzzles\n- **Object transformation:** Environmental elements are converted into musical notes through physical interactions.\n- **3D Grid:** Notes must be strategically positioned in space to recreate complex sheet music.\n\n### Synesthetic Experience\n- **Audiovisual feedback:** Every interaction generates both visual and auditory responses, creating a direct link between action and result.\n- **Reactive environment:** The VR space dynamically responds to the player's compositions."
+        },
+        "categories": [
+            "Unity",
+            "XR",
+            "Blender"
+        ],
+        "tags": [
+            "Unity",
+            "XR",
+            "Interaction Design",
+            "Audio Programming"
+        ],
+        "image": "projects/soundsculpt/soundsculpt_1.jpg",
+        "gitLink": "https://github.com/ViMountain-Games/SoundSculpt-VR",
+        "liveLink": "",
+        "featured": true,
+        "sortDate": "2025-04-01",
+        "media": [
+            {
+                "type": "video",
+                "src": "videos/soundsculpt_gameplay.mp4",
+                "duration": 5000,
+                "volume": 0.3
+            },
+            {
+                "type": "image",
+                "src": "projects/soundsculpt/soundsculpt_1.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/soundsculpt/soundsculpt_2.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/soundsculpt/soundsculpt_3.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/soundsculpt/soundsculpt_4.jpg",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": {
+            "it": "BeatFlow",
+            "en": "BeatFlow"
+        },
+        "description": {
+            "it": "Rhythm game iOS sviluppato in Swift con SpriteKit: taglia le note a tempo e scala le classifiche globali.",
+            "en": "iOS rhythm game built with Swift and SpriteKit: slash notes to the beat and climb global leaderboards."
+        },
+        "longDescription": {
+            "it": "**BeatFlow** è un rhythm game sviluppato nativamente in **Swift** utilizzando il framework **SpriteKit**.\n\n## Gameplay\n\n### Sincronizzazione Ritmica\n- **Note a tempo:** Gli elementi scendono sincronizzati con la musica; l'obiettivo è intercettarli con precisione.\n- **Sistema combo:** Un algoritmo valuta il tempismo per calcolare punteggi e moltiplicatori.\n\n### Competizione\n- **Classifiche online:** Sistema di leaderboard per confrontarsi con altri giocatori.\n\n## Contributo Tecnico\nSviluppo dell'**algoritmo di generazione note** basato sul BPM della traccia audio e ottimizzazione delle performance grafiche e di input su dispositivi iOS.",
+            "en": "**BeatFlow** is a rhythm game natively developed in **Swift** using the **SpriteKit** framework.\n\n## Gameplay\n\n### Rhythmic Synchronization\n- **Timed notes:** Elements descend synchronized with the music; the goal is to intercept them with precision.\n- **Combo system:** An algorithm evaluates timing to calculate scores and multipliers.\n\n### Competition\n- **Online leaderboards:** Ranking system to compete with other players.\n\n## Technical Contribution\nDevelopment of the **note generation algorithm** based on the audio track's BPM and optimization of graphical and input performance on iOS devices."
+        },
+        "categories": [
+            "iOS",
+            "Mobile"
+        ],
+        "tags": [
+            "iOS",
+            "SpriteKit",
+            "Swift",
+            "Mobile",
+            "Rhythm Game"
+        ],
+        "image": "projects/beat_flow/beat_flow_1.png",
+        "gitLink": "https://github.com/MicheleColella/BeatFlow.git",
+        "liveLink": "",
+        "featured": true,
+        "sortDate": "2024-01-01",
+        "media": [
+            {
+                "type": "image",
+                "src": "projects/beat_flow/beat_flow_2.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/beat_flow/beat_flow_3.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/beat_flow/beat_flow_4.png",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "title": {
+            "it": "Lemy Talk",
+            "en": "Lemy Talk"
+        },
+        "description": {
+            "it": "App iOS per la gestione equa dei turni di parola nelle conversazioni di gruppo.",
+            "en": "iOS app for fair turn management in group conversations."
+        },
+        "longDescription": {
+            "it": "**Lemy Talk** è un'applicazione iOS progettata per bilanciare la partecipazione nelle conversazioni di gruppo.\n\n## Funzionalità\n\n### Gestione del Tempo\n- **Timer equi:** Ogni partecipante riceve un tempo definito per intervenire, evitando che singole voci dominino la discussione.\n- **Turnazione automatica:** Passaggio fluido del turno allo scadere del timer assegnato.\n\n### Archiviazione\n- **Registrazione conversazioni:** Possibilità di salvare e catalogare le discussioni con titoli e descrizioni.\n- **Riascolto:** Archivio accessibile per consultazioni future.\n\n## Casi d'Uso\nRiunioni di lavoro, dibattiti, gruppi di studio e contesti dove l'inclusività comunicativa è prioritaria.",
+            "en": "**Lemy Talk** is an iOS application designed to balance participation in group conversations.\n\n## Features\n\n### Time Management\n- **Fair timers:** Each participant receives a defined time to speak, preventing single voices from dominating the discussion.\n- **Automatic turn-taking:** Smooth handoff when the assigned timer expires.\n\n### Archiving\n- **Conversation recording:** Ability to save and catalog discussions with titles and descriptions.\n- **Playback:** Accessible archive for future reference.\n\n## Use Cases\nWork meetings, debates, study groups, and contexts where inclusive communication is a priority."
+        },
+        "categories": [
+            "iOS",
+            "Mobile"
+        ],
+        "tags": [
+            "iOS",
+            "Time Management",
+            "Accessibility",
+            "Communication"
+        ],
+        "image": "projects/lemy_talk/lemy_talk_1.png",
+        "gitLink": "https://github.com/MicheleColella/Lemy-Talk.git",
+        "liveLink": "",
+        "featured": true,
+        "sortDate": "2024-02-15",
+        "media": [
+            {
+                "type": "image",
+                "src": "projects/lemy_talk/lemy_talk_2.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/lemy_talk/lemy_talk_3.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/lemy_talk/lemy_talk_4.png",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "title": {
+            "it": "Musée",
+            "en": "Musée"
+        },
+        "description": {
+            "it": "App iOS accessibile che utilizza Beacon per guidare utenti non vedenti all'interno dei musei.",
+            "en": "Accessible iOS app using Beacons to guide blind users through museums."
+        },
+        "longDescription": {
+            "it": "**Musée** è un'applicazione progettata con un approccio **blind-first**, rivolta principalmente a persone non vedenti e ipovedenti.\n\n## Esperienza Museale Inclusiva\n\n### Contenuti Audio\n- **Descrizioni immersive:** Storie, contesti e descrizioni dettagliate delle opere, pensate per andare oltre la percezione visiva.\n\n### Navigazione Assistita\n- **Tecnologia Beacon:** Sensori posizionati nello spazio espositivo guidano l'utente verso le opere con precisione.\n- **Feedback contestuale:** L'app fornisce indicazioni vocali basate sulla posizione rilevata.\n\n### Accessibilità\n- **Design blind-first:** Interfaccia e flussi completamente utilizzabili senza l'uso della vista.",
+            "en": "**Musée** is an application designed with a **blind-first** approach, primarily aimed at blind and visually impaired users.\n\n## Inclusive Museum Experience\n\n### Audio Content\n- **Immersive descriptions:** Stories, contexts, and detailed artwork descriptions, designed to go beyond visual perception.\n\n### Assisted Navigation\n- **Beacon technology:** Sensors positioned throughout the exhibition space guide users toward artworks with precision.\n- **Contextual feedback:** The app provides voice guidance based on detected location.\n\n### Accessibility\n- **Blind-first design:** Interface and flows completely usable without sight."
+        },
+        "categories": [
+            "iOS",
+            "Mobile"
+        ],
+        "tags": [
+            "iOS",
+            "Accessibility",
+            "Beacons",
+            "Inclusive Design"
+        ],
+        "image": "projects/musee/musee_1.png",
+        "gitLink": "https://github.com/Ciara-s-Angels/project-next.git",
+        "liveLink": "",
+        "featured": true,
+        "sortDate": "2024-04-01",
+        "media": [
+            {
+                "type": "image",
+                "src": "projects/musee/musee_2.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/musee/musee_3.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/musee/musee_4.png",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "title": {
+            "it": "ANM Wayfinding",
+            "en": "ANM Wayfinding"
+        },
+        "description": {
+            "it": "Sistema di orientamento iBeacon per l'accessibilità nelle stazioni della metropolitana di Napoli.",
+            "en": "iBeacon-based wayfinding system for accessibility in Naples metro stations."
+        },
+        "longDescription": {
+            "it": "Progetto realizzato in collaborazione con **ANM** (Azienda Napoletana Mobilità) e l'**Accademia delle Belle Arti** di Napoli. L'obiettivo è migliorare il sistema LOGES esistente nelle stazioni, fornendo supporto a persone non vedenti, ipovedenti e con difficoltà di orientamento.\n\n## Funzionalità\n\n### Tecnologia\n- **iBeacon:** Sensori per il tracciamento preciso della posizione all'interno delle stazioni.\n- **Pathfinding:** Algoritmo di calcolo del percorso ottimale verso la destinazione selezionata.\n\n### Guida Intelligente\n- **Feedback aptico:** Vibrazioni tattili in prossimità dei punti di riferimento.\n- **Segnali visivi:** Indicazioni dinamiche sul percorso per utenti ipovedenti.\n- **VoiceOver:** Piena compatibilità con le funzioni di accessibilità iOS.\n\n## Contributo Tecnico\nSviluppo del backend per il pathfinding, implementazione del feedback aptico e della logica UI per la navigazione.",
+            "en": "Project developed in collaboration with **ANM** (Naples Mobility Company) and the **Academy of Fine Arts** in Naples. The goal is to improve the existing LOGES system in stations, providing support to blind, visually impaired users, and those with orientation difficulties.\n\n## Features\n\n### Technology\n- **iBeacon:** Sensors for precise position tracking within stations.\n- **Pathfinding:** Algorithm for calculating the optimal route to the selected destination.\n\n### Smart Guidance\n- **Haptic feedback:** Tactile vibrations near reference points.\n- **Visual cues:** Dynamic path indicators for visually impaired users.\n- **VoiceOver:** Full compatibility with iOS accessibility features.\n\n## Technical Contribution\nBackend development for pathfinding, haptic feedback implementation, and UI logic for navigation."
+        },
+        "categories": [
+            "iOS",
+            "Mobile"
+        ],
+        "tags": [
+            "iOS",
+            "iBeacon",
+            "Accessibility",
+            "Wayfinding",
+            "Public Transport"
+        ],
+        "image": "projects/anm_wayfinding/anm_1.png",
+        "gitLink": "https://github.com/MicheleColella/DM2",
+        "liveLink": "",
+        "featured": true,
+        "sortDate": "2024-05-15",
+        "media": [
+            {
+                "type": "image",
+                "src": "projects/anm_wayfinding/anm_2.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/anm_wayfinding/anm_3.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/anm_wayfinding/anm_4.png",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "title": {
+            "it": "Theo's Diary",
+            "en": "Theo's Diary"
+        },
+        "description": {
+            "it": "Platformer 2D in pixel art pubblicato su Google Play Store. Ruolo: Lead Programmer.",
+            "en": "2D pixel-art platformer published on Google Play Store. Role: Lead Programmer."
+        },
+        "longDescription": {
+            "it": "**Theo's Diary** è un platformer 2D in stile pixel art, pubblicato sul **Google Play Store**. Nel progetto ho ricoperto il ruolo di **Lead Programmer**.\n\n## Responsabilità\n\n### Sviluppo Tecnico\n- **Character controller:** Implementazione del sistema di movimento, con focus su fluidità e reattività.\n- **Architettura livelli:** Progettazione del sistema di gestione e caricamento dei livelli.\n\n### Coordinamento\n- **Team leadership:** Supervisione del ciclo di sviluppo e coordinamento tra i dipartimenti (arte, design, codice).\n- **Ottimizzazione:** Lavoro sulle performance per garantire un'esperienza fluida su dispositivi Android.",
+            "en": "**Theo's Diary** is a 2D platformer in pixel art style, published on the **Google Play Store**. I served as **Lead Programmer** on this project.\n\n## Responsibilities\n\n### Technical Development\n- **Character controller:** Implementation of the movement system, focusing on fluidity and responsiveness.\n- **Level architecture:** Design of the level management and loading system.\n\n### Coordination\n- **Team leadership:** Oversight of the development cycle and coordination between departments (art, design, code).\n- **Optimization:** Performance work to ensure a smooth experience on Android devices."
+        },
+        "categories": [
+            "Unity",
+            "Mobile",
+            "Blender"
+        ],
+        "tags": [
+            "Unity",
+            "C#",
+            "3D Modeling",
+            "Mobile Game",
+            "Lead Programmer"
+        ],
+        "image": "projects/theos_diary/theos_diary_1.png",
+        "gitLink": "",
+        "liveLink": "https://play.google.com/store/apps/details?id=com.michelecolella.TheosDiary",
+        "featured": true,
+        "sortDate": "2024-07-01",
+        "media": [
+            {
+                "type": "image",
+                "src": "projects/theos_diary/theos_diary_2.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/theos_diary/theos_diary_3.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/theos_diary/theos_diary_4.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/theos_diary/theos_diary_5.png",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "title": {
+            "it": "Theo's Diary VR",
+            "en": "Theo's Diary VR"
+        },
+        "description": {
+            "it": "Demo VR di un libro interattivo, sviluppata in Unity con target Apple Vision Pro.",
+            "en": "VR interactive book demo, developed in Unity targeting Apple Vision Pro."
+        },
+        "longDescription": {
+            "it": "**Theo's Diary VR** è una rielaborazione in realtà virtuale di un segmento del gioco originale, riprogettato per l'interazione spaziale.\n\n## Obiettivi\n\n### Estensione di Piattaforma\n- **Target primario:** Compatibilità con **Apple Vision Pro** e visionOS.\n- **Sviluppo cross-hardware:** Architettura testata su **Meta Quest 2** per validazione, ma progettata per l'ecosistema Apple.\n\n### Adattamento\n- **Interazione spaziale:** Meccaniche ripensate per sfruttare le peculiarità della realtà virtuale.\n- **Formato demo:** Una porzione del gioco originale, adattata come proof of concept per la piattaforma VR.",
+            "en": "**Theo's Diary VR** is a virtual reality rework of a segment from the original game, redesigned for spatial interaction.\n\n## Goals\n\n### Platform Extension\n- **Primary target:** Compatibility with **Apple Vision Pro** and visionOS.\n- **Cross-hardware development:** Architecture tested on **Meta Quest 2** for validation, but designed for the Apple ecosystem.\n\n### Adaptation\n- **Spatial interaction:** Mechanics rethought to leverage the peculiarities of virtual reality.\n- **Demo format:** A portion of the original game, adapted as a proof of concept for the VR platform."
+        },
+        "categories": [
+            "Unity",
+            "XR"
+        ],
+        "tags": [
+            "Unity",
+            "VR",
+            "Interactive Storytelling",
+            "Oculus"
+        ],
+        "image": "projects/theos_diary_vr/theos_diary_vr_1.jpg",
+        "gitLink": "",
+        "liveLink": "",
+        "featured": false,
+        "sortDate": "2024-08-15",
+        "media": [
+            {
+                "type": "video",
+                "src": "videos/theos_diary_vr_gameplay.mp4",
+                "duration": 5000,
+                "volume": 0.3
+            },
+            {
+                "type": "image",
+                "src": "projects/theos_diary_vr/theos_diary_vr_1.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/theos_diary_vr/theos_diary_vr_2.jpg",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "title": {
+            "it": "Urban Ascent",
+            "en": "Urban Ascent"
+        },
+        "description": {
+            "it": "Endless runner arcade sviluppato in una settimana come sfida di rapid prototyping.",
+            "en": "Arcade endless runner developed in one week as a rapid prototyping challenge."
+        },
+        "longDescription": {
+            "it": "**Urban Ascent** è un progetto individuale nato da una sfida personale: completare un gioco dall'ideazione alla pubblicazione in tempi ridotti.\n\n## Caratteristiche\n\n### Sviluppo Rapido\n- **Timeline:** Ciclo completo di produzione completato in circa **una settimana**.\n- **Scope gestito:** Meccaniche semplici ma rifinite, adatte al timeframe disponibile.\n\n### Gameplay\n- **Endless runner verticale:** Scalata di grattacieli infiniti con ostacoli da evitare.\n- **Power-up:** Sistema di potenziamenti raccoglibili durante la partita.\n- **Stile arcade:** Meccaniche immediate ispirate ai classici del genere.",
+            "en": "**Urban Ascent** is an individual project born from a personal challenge: completing a game from concept to release in a short timeframe.\n\n## Features\n\n### Rapid Development\n- **Timeline:** Complete production cycle finished in approximately **one week**.\n- **Managed scope:** Simple but polished mechanics, suited for the available timeframe.\n\n### Gameplay\n- **Vertical endless runner:** Climbing infinite skyscrapers while avoiding obstacles.\n- **Power-ups:** Collectible enhancement system during gameplay.\n- **Arcade style:** Immediate mechanics inspired by genre classics."
+        },
+        "categories": [
+            "Unity",
+            "Mobile",
+            "Blender"
+        ],
+        "tags": [
+            "Unity",
+            "C#",
+            "Endless Runner",
+            "Arcade",
+            "Rapid Prototyping"
+        ],
+        "image": "projects/urban_ascent/urban_ascent_1.png",
+        "gitLink": "",
+        "liveLink": "",
+        "featured": true,
+        "sortDate": "2024-10-01",
+        "media": [
+            {
+                "type": "video",
+                "src": "videos/urban_ascent_gameplay.mp4",
+                "duration": 5000,
+                "volume": 0.3
+            },
+            {
+                "type": "image",
+                "src": "projects/urban_ascent/urban_ascent_1.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/urban_ascent/urban_ascent_2.png",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "title": {
+            "it": "Multiversal",
+            "en": "Multiversal"
+        },
+        "description": {
+            "it": "Gioco VR sperimentale per Meta Quest con portali non euclidei e supporto hand tracking.",
+            "en": "Experimental VR game for Meta Quest featuring non-Euclidean portals and hand tracking support."
+        },
+        "longDescription": {
+            "it": "**Multiversal** è un progetto sperimentale per **Meta Quest**, nato per esplorare meccaniche avanzate di presa e interazione in VR.\n\n## Caratteristiche\n\n### Interazione\n- **Supporto duale:** Compatibilità con controller tradizionali e **hand tracking** per un'interazione intuitiva.\n- **Presa fisica:** Sistema di grabbing basato sulla fisica per oggetti di varie forme e dimensioni.\n\n### Meccaniche Distintive\n- **Portali non euclidei:** Implementazione di passaggi che permettono il trasferimento di oggetti tra spazi alternativi.\n- **Fisica sperimentale:** Esplorazione di logiche spaziali non convenzionali all'interno dell'ambiente virtuale.",
+            "en": "**Multiversal** is an experimental project for **Meta Quest**, created to explore advanced grabbing and interaction mechanics in VR.\n\n## Features\n\n### Interaction\n- **Dual support:** Compatibility with traditional controllers and **hand tracking** for intuitive interaction.\n- **Physics-based grabbing:** Grabbing system based on physics for objects of various shapes and sizes.\n\n### Distinctive Mechanics\n- **Non-Euclidean portals:** Implementation of passages that allow object transfer between alternative spaces.\n- **Experimental physics:** Exploration of unconventional spatial logic within the virtual environment."
+        },
+        "categories": [
+            "Unity",
+            "XR"
+        ],
+        "tags": [
+            "Unity",
+            "XR",
+            "Mixed Reality",
+            "Hand Tracking",
+            "Non-Euclidean Geometry"
+        ],
+        "image": "projects/multiversal/multiversal_1.jpg",
+        "gitLink": "https://github.com/MicheleColella/Multiversal",
+        "liveLink": "",
+        "featured": true,
+        "sortDate": "2024-11-15",
+        "media": [
+            {
+                "type": "video",
+                "src": "videos/multiversal_gameplay.mp4",
+                "duration": 5000,
+                "volume": 0.3
+            },
+            {
+                "type": "image",
+                "src": "projects/multiversal/multiversal_1.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/multiversal/multiversal_2.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/multiversal/multiversal_3.jpg",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "title": {
+            "it": "Echo Legends",
+            "en": "Echo Legends"
+        },
+        "description": {
+            "it": "Roguelike isometrico in Unity 3D con AI adattiva e ambienti generati proceduralmente.",
+            "en": "Isometric roguelike in Unity 3D with adaptive AI and procedurally generated environments."
+        },
+        "longDescription": {
+            "it": "**Echo Legends** è un gioco **roguelike isometrico** sviluppato con **Unity 3D**, che combina azione e strategia.\n\n## Caratteristiche\n\n### Intelligenza Artificiale\n- **Comportamento adattivo:** I nemici analizzano l'ambiente in tempo reale e modificano le proprie tattiche di conseguenza.\n- **Sfida dinamica:** Il livello di difficoltà si adatta al comportamento del giocatore.\n\n### Generazione Procedurale\n- **Ambienti unici:** Ogni run presenta layout e sfide differenti.\n- **Rigiocabilità:** La varietà procedurale garantisce esperienze diverse ad ogni partita.\n\n### Profondità Strategica\n- **Arsenale di abilità:** Sistema di skill ed elementi che premia l'adattabilità.\n- **Scelte significative:** Decisioni tattiche con conseguenze sul gameplay.",
+            "en": "**Echo Legends** is an **isometric roguelike** game developed with **Unity 3D**, combining action and strategy.\n\n## Features\n\n### Artificial Intelligence\n- **Adaptive behavior:** Enemies analyze the environment in real-time and modify their tactics accordingly.\n- **Dynamic challenge:** Difficulty level adapts to player behavior.\n\n### Procedural Generation\n- **Unique environments:** Each run presents different layouts and challenges.\n- **Replayability:** Procedural variety ensures different experiences each playthrough.\n\n### Strategic Depth\n- **Ability arsenal:** Skill and element system that rewards adaptability.\n- **Meaningful choices:** Tactical decisions with gameplay consequences."
+        },
+        "categories": [
+            "Unity",
+            "Blender"
+        ],
+        "tags": [
+            "Unity",
+            "C#",
+            "Roguelike",
+            "Isometric",
+            "Advanced AI"
+        ],
+        "image": "projects/echo_legends/echo_legends_2.jpg",
+        "gitLink": "https://github.com/MicheleColella/Echo-Legends",
+        "liveLink": "",
+        "featured": true,
+        "sortDate": "2025-01-01",
+        "media": [
+            {
+                "type": "video",
+                "src": "videos/echo_legends_gameplay.mp4",
+                "duration": 5000,
+                "volume": 0.3
+            },
+            {
+                "type": "image",
+                "src": "projects/echo_legends/echo_legends_1.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/echo_legends/echo_legends_2.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/echo_legends/echo_legends_3.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/echo_legends/echo_legends_4.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/echo_legends/echo_legends_5.jpg",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "title": {
+            "it": "Parkour Hoops",
+            "en": "Parkour Hoops"
+        },
+        "description": {
+            "it": "Gioco VR che combina fisica realistica, parkour e basket in diverse modalità di gioco.",
+            "en": "VR game combining realistic physics, parkour, and basketball across multiple game modes."
+        },
+        "longDescription": {
+            "it": "**Parkour Hoops** è un gioco VR che utilizza una simulazione fisica realistica per offrire un'esperienza di parkour immersiva, integrata con elementi sportivi.\n\n## Modalità di Gioco\n\n### Playground\n- **Sandbox creativo:** Ambiente libero per sperimentare acrobazie e affinare le abilità senza limiti di tempo o obiettivi.\n\n### Tower Rush\n- **Scalata verticale:** Percorso impegnativo con ostacoli da superare in sequenza.\n\n### Hoop Dash\n- **Fusione parkour-basket:** Combinazione di movimento acrobatico e tiri a canestro da realizzare durante la corsa.",
+            "en": "**Parkour Hoops** is a VR game that uses realistic physics simulation to deliver an immersive parkour experience, integrated with sports elements.\n\n## Game Modes\n\n### Playground\n- **Creative sandbox:** Free environment to experiment with stunts and refine skills without time limits or objectives.\n\n### Tower Rush\n- **Vertical climb:** Challenging course with obstacles to overcome in sequence.\n\n### Hoop Dash\n- **Parkour-basketball fusion:** Combination of acrobatic movement and basketball shots to make while running."
+        },
+        "categories": [
+            "Unity",
+            "XR"
+        ],
+        "tags": [
+            "Unity",
+            "XR",
+            "VR",
+            "Physics",
+            "Sports"
+        ],
+        "image": "projects/parkour_hoops/parkour_hoops_1.jpg",
+        "gitLink": "https://github.com/MicheleColella/Parkour-Hoops",
+        "liveLink": "",
+        "featured": true,
+        "sortDate": "2025-02-15",
+        "media": [
+            {
+                "type": "video",
+                "src": "videos/parkour_hoops_gameplay.mp4",
+                "duration": 5000,
+                "volume": 0.3
+            },
+            {
+                "type": "image",
+                "src": "projects/parkour_hoops/parkour_hoops_1.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/parkour_hoops/parkour_hoops_2.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/parkour_hoops/parkour_hoops_3.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/parkour_hoops/parkour_hoops_4.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/parkour_hoops/parkour_hoops_5.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/parkour_hoops/parkour_hoops_6.jpg",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "title": {
+            "it": "FPS Ragdoll Demo",
+            "en": "FPS Ragdoll Demo"
+        },
+        "description": {
+            "it": "Demo tecnica FPS focalizzata su Active Ragdoll e fisica ambientale interattiva.",
+            "en": "Technical FPS demo focused on Active Ragdoll and interactive environmental physics."
+        },
+        "longDescription": {
+            "it": "**FPS Ragdoll Demo** è un esperimento tecnico incentrato sulla simulazione fisica e l'interazione dinamica in un contesto sparatutto.\n\n## Aspetti Tecnici\n\n### Active Ragdoll\n- **Animazioni fisiche:** Personaggi con movimenti basati sulla fisica che reagiscono realisticamente a impatti e forze.\n- **Reazioni dinamiche:** Comportamenti emergenti derivanti dalle interazioni con l'ambiente.\n\n### Fisica Ambientale\n- **Oggetti interattivi:** Ogni elemento dell'ambiente risponde a collisioni, esplosioni e forze applicate.\n\n### Controller Ibrido\n- **Input + fisica:** Sistema di movimento che combina input tradizionali con calcoli fisici per un gameplay fluido ma realistico.",
+            "en": "**FPS Ragdoll Demo** is a technical experiment focused on physics simulation and dynamic interaction in a shooter context.\n\n## Technical Aspects\n\n### Active Ragdoll\n- **Physics-based animations:** Characters with physics-driven movements that react realistically to impacts and forces.\n- **Dynamic reactions:** Emergent behaviors arising from environmental interactions.\n\n### Environmental Physics\n- **Interactive objects:** Every element in the environment responds to collisions, explosions, and applied forces.\n\n### Hybrid Controller\n- **Input + physics:** Movement system combining traditional inputs with physics calculations for smooth yet realistic gameplay."
+        },
+        "categories": [
+            "Unity",
+            "Web"
+        ],
+        "tags": [
+            "Unity",
+            "C#",
+            "Physics",
+            "Active Ragdoll",
+            "Tech Demo"
+        ],
+        "image": "projects/fps_ragdoll/fps_ragdoll_1.jpg",
+        "gitLink": "",
+        "liveLink": "https://michelecolella.github.io/FPSRagdollDemo/",
+        "featured": false,
+        "sortDate": "2025-05-15",
+        "media": [
+            {
+                "type": "video",
+                "src": "videos/fps_ragdoll_gameplay.mp4",
+                "duration": 5000,
+                "volume": 0.3
+            },
+            {
+                "type": "image",
+                "src": "projects/fps_ragdoll/fps_ragdoll_1.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/fps_ragdoll/fps_ragdoll_2.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/fps_ragdoll/fps_ragdoll_3.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/fps_ragdoll/fps_ragdoll_4.jpg",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "title": {
+            "it": "VR Combat Demo",
+            "en": "VR Combat Demo"
+        },
+        "description": {
+            "it": "Gioco di combattimento VR stilizzato con sistema di controllo fisico e intuitivo.",
+            "en": "Stylized VR combat game with a physical and intuitive control system."
+        },
+        "longDescription": {
+            "it": "**VR Combat Demo** è un progetto nato per sperimentare un sistema di combattimento fisico e intuitivo in realtà virtuale.\n\n## Design\n\n### Stile Visivo\n- **Estetica stilizzata:** Design visivo dinamico che accompagna un gameplay veloce e reattivo.\n\n### Sistema di Controllo\n- **Input naturale:** Controlli progettati per minimizzare l'astrazione, permettendo movimenti e azioni di combattimento che rispecchiano i gesti reali.\n\n### Libertà di Espressione\n- **Stili di combattimento:** Ogni scontro offre la possibilità di sperimentare approcci diversi, dalla difesa metodica all'attacco aggressivo.",
+            "en": "**VR Combat Demo** is a project created to experiment with a physical and intuitive combat system in virtual reality.\n\n## Design\n\n### Visual Style\n- **Stylized aesthetic:** Dynamic visual design that complements fast and responsive gameplay.\n\n### Control System\n- **Natural input:** Controls designed to minimize abstraction, allowing movement and combat actions that mirror real gestures.\n\n### Freedom of Expression\n- **Combat styles:** Each encounter offers the opportunity to experiment with different approaches, from methodical defense to aggressive offense."
+        },
+        "categories": [
+            "Unity",
+            "XR"
+        ],
+        "tags": [
+            "Unity",
+            "VR",
+            "Combat System",
+            "Physics",
+            "Stylized"
+        ],
+        "image": "projects/vr_combat/vr_combat_1.jpg",
+        "gitLink": "",
+        "liveLink": "",
+        "featured": false,
+        "sortDate": "2025-07-01",
+        "media": [
+            {
+                "type": "video",
+                "src": "videos/vr_combat_gameplay.mp4",
+                "duration": 5000,
+                "volume": 0.3
+            },
+            {
+                "type": "image",
+                "src": "projects/vr_combat/vr_combat_1.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/vr_combat/vr_combat_2.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/vr_combat/vr_combat_3.jpg",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/vr_combat/vr_combat_4.jpg",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "title": {
+            "it": "Little Paladins",
+            "en": "Little Paladins"
+        },
+        "description": {
+            "it": "Prototipo 3D top-down sviluppato in una settimana per testare architetture di codice scalabili.",
+            "en": "3D top-down prototype developed in one week to test scalable code architectures."
+        },
+        "longDescription": {
+            "it": "**Little Paladins** è un prototipo 3D sviluppato in **una settimana** per validare un'architettura di gioco scalabile.\n\n## Aspetti Tecnici\n\n### Sistema di Movimento Unificato\n- **Codice condiviso:** Un singolo sistema gestisce sia il movimento del giocatore che quello degli NPC, garantendo coerenza e riutilizzabilità.\n\n### Controlli Adattivi\n- **Input multipli:** Supporto per tastiera e mouse (point-and-click), con transizione fluida tra le modalità.\n\n### Architettura Modulare\n- **Design riutilizzabile:** Struttura che favorisce l'estensione del codice e l'aggiunta di nuove funzionalità.\n- **Sistema di dialoghi:** Implementazione di base per interazioni NPC.",
+            "en": "**Little Paladins** is a 3D prototype developed in **one week** to validate a scalable game architecture.\n\n## Technical Aspects\n\n### Unified Movement System\n- **Shared code:** A single system handles both player and NPC movement, ensuring consistency and reusability.\n\n### Adaptive Controls\n- **Multiple inputs:** Support for keyboard and mouse (point-and-click), with smooth transition between modes.\n\n### Modular Architecture\n- **Reusable design:** Structure that facilitates code extension and addition of new features.\n- **Dialogue system:** Basic implementation for NPC interactions."
+        },
+        "categories": [
+            "Unity",
+            "Web"
+        ],
+        "tags": [
+            "Unity",
+            "C#",
+            "Prototype",
+            "Game Architecture",
+            "3D Top-Down"
+        ],
+        "image": "projects/little_paladins/little_paladins_1.png",
+        "gitLink": "https://github.com/MicheleColella/Little-Paladins.git",
+        "liveLink": "https://michelecolella.github.io/Little-Paladins-WebGL-Build",
+        "featured": false,
+        "sortDate": "2025-08-15",
+        "media": [
+            {
+                "type": "image",
+                "src": "projects/little_paladins/little_paladins_1.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/little_paladins/little_paladins_2.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/little_paladins/little_paladins_3.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/little_paladins/little_paladins_4.png",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "title": {
+            "it": "RTS MR Game",
+            "en": "RTS MR Game"
+        },
+        "description": {
+            "it": "Demo RTS in Mixed Reality per Meta Quest 3: gestisci un regno generato sulle superfici del tuo ambiente.",
+            "en": "Mixed Reality RTS demo for Meta Quest 3: manage a kingdom generated on your environment's surfaces."
+        },
+        "longDescription": {
+            "it": "**RTS MR Game** è una demo strategica in tempo reale per **Meta Quest 3**, che porta il genere RTS nella realtà mista.\n\n## Caratteristiche\n\n### Integrazione Ambientale\n- **Griglia dinamica:** Il campo di gioco viene generato automaticamente sulle superfici fisiche rilevate dal visore (tavoli, pavimenti).\n- **Spazio reale:** Il regno virtuale si sovrappone all'ambiente circostante del giocatore.\n\n### Gestione Strategica\n- **Raccolta risorse:** Sistema economico basato sulla raccolta e gestione di risorse.\n- **Addestramento truppe:** Reclutamento e potenziamento delle unità.\n- **Pianificazione:** Strategie offensive e difensive da orchestrare in tempo reale.\n\n### Espansione\n- **Crescita territoriale:** Ampliamento dell'area di influenza e costruzione di strutture.",
+            "en": "**RTS MR Game** is a real-time strategy demo for **Meta Quest 3**, bringing the RTS genre into mixed reality.\n\n## Features\n\n### Environmental Integration\n- **Dynamic grid:** The playing field is automatically generated on physical surfaces detected by the headset (tables, floors).\n- **Real space:** The virtual kingdom overlays the player's surrounding environment.\n\n### Strategic Management\n- **Resource gathering:** Economic system based on collecting and managing resources.\n- **Troop training:** Unit recruitment and upgrades.\n- **Planning:** Offensive and defensive strategies to orchestrate in real-time.\n\n### Expansion\n- **Territorial growth:** Expanding the area of influence and building structures."
+        },
+        "categories": [
+            "Unity",
+            "XR"
+        ],
+        "tags": [
+            "Unity",
+            "Mixed Reality",
+            "RTS",
+            "Meta Quest 3",
+            "Spatial Computing"
+        ],
+        "image": "projects/rts_mr/rts_mr_1.png",
+        "gitLink": "",
+        "liveLink": "",
+        "featured": false,
+        "sortDate": "2025-10-01",
+        "media": [
+            {
+                "type": "video",
+                "src": "videos/rts_mr_gameplay.mp4",
+                "duration": 5000,
+                "volume": 0.3
+            },
+            {
+                "type": "image",
+                "src": "projects/rts_mr/rts_mr_1.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/rts_mr/rts_mr_2.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/rts_mr/rts_mr_3.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/rts_mr/rts_mr_4.png",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "title": {
+            "it": "FPS Ragdoll 2",
+            "en": "FPS Ragdoll 2"
+        },
+        "description": {
+            "it": "Evoluzione della demo FPS Ragdoll con gravità dinamica, inventario e minimappa.",
+            "en": "Evolution of the FPS Ragdoll demo with dynamic gravity, inventory, and minimap."
+        },
+        "longDescription": {
+            "it": "**FPS Ragdoll 2** espande le fondamenta del primo prototipo, introducendo un'architettura più flessibile e nuove meccaniche.\n\n## Nuove Funzionalità\n\n### Manipolazione Gravitazionale\n- **Gravità dinamica:** Possibilità di alterare la gravità in tempo reale per risolvere puzzle o combattere in modi creativi.\n\n### Sistemi Aggiuntivi\n- **Minimappa:** Overlay per l'orientamento nell'ambiente.\n- **Inventario:** Sistema di gestione degli oggetti raccolti.\n- **Presa migliorata:** Meccaniche di grabbing fisico più precise e versatili.\n\n### Active Ragdoll 2.0\n- **Movimenti evoluti:** Animazioni e reazioni dei personaggi più fluide rispetto alla versione precedente.",
+            "en": "**FPS Ragdoll 2** expands upon the foundation of the first prototype, introducing a more flexible architecture and new mechanics.\n\n## New Features\n\n### Gravity Manipulation\n- **Dynamic gravity:** Ability to alter gravity in real-time to solve puzzles or fight creatively.\n\n### Additional Systems\n- **Minimap:** Overlay for orientation within the environment.\n- **Inventory:** System for managing collected items.\n- **Improved grabbing:** More precise and versatile physical grabbing mechanics.\n\n### Active Ragdoll 2.0\n- **Evolved movements:** Smoother character animations and reactions compared to the previous version."
+        },
+        "categories": [
+            "Unity",
+            "Blender"
+        ],
+        "tags": [
+            "Unity",
+            "C#",
+            "Gravity System",
+            "Advanced Physics",
+            "Active Ragdoll"
+        ],
+        "image": "projects/fps_ragdoll_2/fps_ragdoll_2_1.png",
+        "gitLink": "",
+        "liveLink": "",
+        "featured": false,
+        "sortDate": "2025-11-15",
+        "media": [
+            {
+                "type": "video",
+                "src": "videos/fps_ragdoll_2_gameplay.mp4",
+                "duration": 5000,
+                "volume": 0.3
+            },
+            {
+                "type": "image",
+                "src": "projects/fps_ragdoll_2/fps_ragdoll_2_1.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/fps_ragdoll_2/fps_ragdoll_2_2.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/fps_ragdoll_2/fps_ragdoll_2_3.png",
+                "duration": 3000
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "title": {
+            "it": "NPC Ecosystem",
+            "en": "NPC Ecosystem"
+        },
+        "description": {
+            "it": "Sistema avanzato per NPC autonomi con TaskScript, un linguaggio di scripting proprietario.",
+            "en": "Advanced system for autonomous NPCs featuring TaskScript, a proprietary scripting language."
+        },
+        "longDescription": {
+            "it": "In questo progetto ho sviluppato un sistema per la gestione di **NPC consapevoli** all'interno di un ecosistema dinamico.\n\n## Innovazioni Tecniche\n\n### TaskScript\n- **Linguaggio proprietario:** Un sistema di scripting progettato per definire comportamenti complessi attraverso funzioni e variabili dedicate.\n- **Flessibilità:** Permette di configurare routine, reazioni e condizioni senza modificare il codice base.\n\n### Performance\n- **Sistema di movimento custom:** Architettura ottimizzata per gestire oltre **100 agenti** simultaneamente senza cali di framerate.\n\n### AI Logica\n- **Decisioni contestuali:** Gli NPC non agiscono in modo casuale, ma valutano condizioni ambientali specifiche per determinare il comportamento appropriato.",
+            "en": "In this project, I developed a system for managing **conscious NPCs** within a dynamic ecosystem.\n\n## Technical Innovations\n\n### TaskScript\n- **Proprietary language:** A scripting system designed to define complex behaviors through dedicated functions and variables.\n- **Flexibility:** Allows configuring routines, reactions, and conditions without modifying the base code.\n\n### Performance\n- **Custom movement system:** Optimized architecture to handle over **100 agents** simultaneously without framerate drops.\n\n### Logical AI\n- **Contextual decisions:** NPCs do not act randomly but evaluate specific environmental conditions to determine appropriate behavior."
+        },
+        "categories": [
+            "Unity",
+            "Blender"
+        ],
+        "tags": [
+            "Unity",
+            "C#",
+            "AI Programming",
+            "Language Design",
+            "Optimization"
+        ],
+        "image": "projects/npc_ecosystem/npc_ecosystem_3.png",
+        "gitLink": "",
+        "liveLink": "",
+        "featured": true,
+        "sortDate": "2026-01-16",
+        "media": [
+            {
+                "type": "video",
+                "src": "videos/npc_ecosystem_gameplay.mp4",
+                "duration": 5000,
+                "volume": 0.3
+            },
+            {
+                "type": "image",
+                "src": "projects/npc_ecosystem/npc_ecosystem_3.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/npc_ecosystem/npc_ecosystem_2.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/npc_ecosystem/npc_ecosystem_1.png",
+                "duration": 3000
+            }
+        ]
+    }
+]

@@ -1,0 +1,12 @@
+.text-rotate {
+  display: inline-flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+.text-rotate-content {
+  display: inline-flex;
+}
+.text-rotate-char {
+  display: inline-block;
+  overflow: hidden;
+}
