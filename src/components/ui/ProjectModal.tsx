@@ -64,7 +64,7 @@ export const ProjectModal = ({
                 </button>
 
                 {/* Media Section (Carousel) - Now takes 60% width on large screens */}
-                <div className="w-full lg:w-3/5 h-[40vh] lg:h-auto relative bg-[#050505] flex items-center justify-center border-r border-white/5">
+                <div className="w-full lg:w-3/5 h-[60vh] lg:h-auto pt-16 lg:pt-0 relative bg-[#050505] flex items-center justify-center border-r border-white/5">
                     <ProjectMediaCarousel
                         media={project.media || []}
                         coverImage={project.image}

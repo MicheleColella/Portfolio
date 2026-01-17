@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-
+import { memo, useMemo } from 'react';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import ShinyText from './ShinyText';
@@ -25,12 +25,10 @@ interface TimelineCardProps {
 export default function TimelineCard({ item, index, isExpanded, onToggle }: TimelineCardProps) {
 
     const isEven = index % 2 === 0;
-    // Even (0, 2): Content on RIGHT.
-    // Odd (1, 3): Content on LEFT.
 
     return (
         <motion.div
-            className="relative flex flex-col md:flex-row w-full items-center" // added items-center to align dot
+            className="relative flex flex-col md:flex-row w-full items-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -68,7 +66,6 @@ export default function TimelineCard({ item, index, isExpanded, onToggle }: Time
     );
 }
 
-// Memoized Title Component to prevent re-renders causing layout shifts
 const TimelineTitle = ({ title, trigger }: { title: string; trigger: boolean }) => (
     <h4 className="text-xl font-bold text-white whitespace-nowrap">
         <ShinyText speed={3} shimmerWidth={100}>
@@ -77,7 +74,26 @@ const TimelineTitle = ({ title, trigger }: { title: string; trigger: boolean }) 
     </h4>
 );
 
-// Sub-component for content
+// Pre-rendered markdown content to avoid freeze on expand
+const MarkdownContent = memo(({ content }: { content: string }) => {
+    const rendered = useMemo(() => (
+        <ReactMarkdown
+            components={{
+                strong: ({ node, ...props }) => <span className="text-white font-semibold" {...props} />,
+                ul: ({ node, ...props }) => <ul className="list-disc pl-4 mt-2 space-y-1" {...props} />,
+                li: ({ node, ...props }) => <li className="pl-1" {...props} />,
+                p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />
+            }}
+        >
+            {content}
+        </ReactMarkdown>
+    ), [content]);
+
+    return <>{rendered}</>;
+});
+
+MarkdownContent.displayName = 'MarkdownContent';
+
 const ContentBlock = ({
     item,
     align,
@@ -90,6 +106,7 @@ const ContentBlock = ({
     onToggle: () => void;
 }) => {
     const { isChanging } = useTranslation();
+
     return (
         <div className={`relative flex flex-col ${align === 'right' ? 'md:items-end md:text-right' : 'md:items-start md:text-left'} text-left items-start`}>
 
@@ -112,7 +129,7 @@ const ContentBlock = ({
                 {/* Strictly Sized Button Wrapper */}
                 <div className="w-8 h-8 flex-shrink-0 relative">
                     <button
-                        className={`absolute inset-0 w-full h-full flex items-center justify-center rounded-full border transition-colors duration-200 z-20 
+                        className={`absolute inset-0 w-full h-full flex items-center justify-center rounded-full border transition-colors duration-300 z-20 
                             ${isExpanded ? 'bg-white text-black border-white' : 'border-white/20 text-white hover:bg-white/10'}`}
                         aria-label="Toggle details"
                     >
@@ -156,16 +173,7 @@ const ContentBlock = ({
                         <div className="relative">
                             <div className="p-6 bg-[#0a0a0a] border border-white/10 rounded-xl shadow-[0_0_30px_-5px_rgba(0,0,0,0.5)] relative">
                                 <div className="text-sm text-zinc-300 leading-relaxed text-left markdown-content">
-                                    <ReactMarkdown
-                                        components={{
-                                            strong: ({ node, ...props }) => <span className="text-white font-semibold" {...props} />,
-                                            ul: ({ node, ...props }) => <ul className="list-disc pl-4 mt-2 space-y-1" {...props} />,
-                                            li: ({ node, ...props }) => <li className="pl-1" {...props} />,
-                                            p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />
-                                        }}
-                                    >
-                                        {item.details}
-                                    </ReactMarkdown>
+                                    <MarkdownContent content={item.details} />
                                 </div>
                             </div>
                         </div>
@@ -173,35 +181,18 @@ const ContentBlock = ({
                 )}
             </AnimatePresence>
 
-            {/* MOBILE/TABLET ACCORDION - In-flow (pushes content) up to XL screens */}
-            <AnimatePresence>
-                {isExpanded && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="w-full xl:hidden overflow-hidden"
-                    >
-                        <div className="pt-4">
-                            <div className="p-4 bg-zinc-900/50 border border-white/10 rounded-xl">
-                                <div className="text-sm text-zinc-300 leading-relaxed markdown-content">
-                                    <ReactMarkdown
-                                        components={{
-                                            strong: ({ node, ...props }) => <span className="text-white font-semibold" {...props} />,
-                                            ul: ({ node, ...props }) => <ul className="list-disc pl-4 mt-2 space-y-1" {...props} />,
-                                            li: ({ node, ...props }) => <li className="pl-1" {...props} />,
-                                            p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />
-                                        }}
-                                    >
-                                        {item.details}
-                                    </ReactMarkdown>
-                                </div>
-                            </div>
+            {/* MOBILE/TABLET ACCORDION - Simple CSS transition for performance */}
+            <div
+                className={`w-full xl:hidden overflow-hidden transition-all duration-300 ease-out ${isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
+            >
+                <div className="pt-4">
+                    <div className="p-4 bg-zinc-900/50 border border-white/10 rounded-xl">
+                        <div className="text-sm text-zinc-300 leading-relaxed markdown-content">
+                            <MarkdownContent content={item.details} />
                         </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

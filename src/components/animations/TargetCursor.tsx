@@ -270,6 +270,11 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
         };
     }, [targetSelector, spinDuration, moveCursor, constants, hideDefaultCursor, isMobile, hoverDuration, parallaxOn]);
 
+    // Don't render on mobile devices
+    if (isMobile) {
+        return null;
+    }
+
     return (
         <div ref={cursorRef} className="target-cursor-wrapper">
             <div ref={dotRef} className="target-cursor-dot" />

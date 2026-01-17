@@ -982,5 +982,52 @@
                 "duration": 3000
             }
         ]
+    },
+    {
+        "id": 19,
+        "title": {
+            "it": "Portfolio Personale",
+            "en": "Personal Portfolio"
+        },
+        "description": {
+            "it": "Portfolio web moderno sviluppato con React e Vite, automatizzato con CI/CD su GitHub Pages.",
+            "en": "Modern web portfolio built with React and Vite, automated with CI/CD on GitHub Pages."
+        },
+        "longDescription": {
+            "it": "Questo **Portfolio Personale** è stato progettato per validare competenze full-stack e DevOps.\n\n## Architettura & Deploy Automatico\n\n### GitHub Actions (CI/CD)\nInvece di un deploy manuale, questo progetto utilizza una pipeline di **Continuous Deployment**:\n- **Azione Automatica:** A ogni `push` sul branch principale, GitHub avvia un runner virtuale.\n- **Clean Build:** Il sito viene compilato in un ambiente isolato, garantendo riproducibilità.\n- **Git LFS Integration:** Gestione automatizzata degli asset pesanti durante la build.\n\n### Tech Stack\n- **Core:** React + TypeScript per robustezza e manutenibilità.\n- **Styling:** TailwindCSS con design responsivo e animazioni custom.\n- **Routing:** Configurazione ottimizzata per gestire il base-path di GitHub Pages.",
+            "en": "This **Personal Portfolio** is designed to validate full-stack and DevOps skills.\n\n## Architecture & Automated Deployment\n\n### GitHub Actions (CI/CD)\nInstead of manual deployment, this project uses a **Continuous Deployment** pipeline:\n- **Automated Action:** On every `push` to the main branch, GitHub spins up a virtual runner.\n- **Clean Build:** The site is compiled in an isolated environment, ensuring reproducibility.\n- **Git LFS Integration:** Automated management of heavy assets during the build.\n\n### Tech Stack\n- **Core:** React + TypeScript for robustness and maintainability.\n- **Styling:** TailwindCSS with responsive design and custom animations.\n- **Routing:** Optimized configuration to handle GitHub Pages base-path."
+        },
+        "categories": [
+            "Web"
+        ],
+        "tags": [
+            "React",
+            "TypeScript",
+            "GitHub Actions",
+            "CI/CD",
+            "TailwindCSS"
+        ],
+        "image": "projects/portfolio/portfolio_1.png",
+        "gitLink": "https://github.com/MicheleColella/Portfolio",
+        "liveLink": "https://michelecolella.github.io/Portfolio/",
+        "featured": true,
+        "sortDate": "2025-01-17",
+        "media": [
+            {
+                "type": "image",
+                "src": "projects/portfolio/portfolio_1.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/portfolio/portfolio_2.png",
+                "duration": 3000
+            },
+            {
+                "type": "image",
+                "src": "projects/portfolio/portfolio_3.png",
+                "duration": 3000
+            }
+        ]
     }
 ]

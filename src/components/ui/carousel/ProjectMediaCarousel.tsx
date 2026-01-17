@@ -113,17 +113,34 @@ export const ProjectMediaCarousel = ({ media, coverImage, title }: ProjectMediaC
         }
     };
 
+    const swipeConfidenceThreshold = 10000;
+    const swipePower = (offset: number, velocity: number) => {
+        return Math.abs(offset) * velocity;
+    };
+
     return (
-        <div className="relative w-full h-full bg-black group">
+        <div className="relative w-full h-full bg-black group touch-pan-y">
             {/* Media Content - Using crossfade instead of wait for smoother transitions */}
             <AnimatePresence mode="popLayout" initial={false}>
                 <motion.div
                     key={currentIndex}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute inset-0 flex items-center justify-center bg-zinc-950"
+                    initial={{ opacity: 0, x: 0 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 0 }} // Simple fade for transition stability vs drag
+                    transition={{ opacity: { duration: 0.2 } }}
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={1}
+                    onDragEnd={(_, { offset, velocity }) => {
+                        const swipe = swipePower(offset.x, velocity.x);
+
+                        if (swipe < -swipeConfidenceThreshold) {
+                            nextSlide();
+                        } else if (swipe > swipeConfidenceThreshold) {
+                            prevSlide();
+                        }
+                    }}
+                    className="absolute inset-0 flex items-center justify-center bg-zinc-950 cursor-grab active:cursor-grabbing"
                 >
                     {currentItem.type === 'video' ? (
                         <div className="relative w-full h-full flex items-center justify-center bg-black">
@@ -133,27 +150,27 @@ export const ProjectMediaCarousel = ({ media, coverImage, title }: ProjectMediaC
                                     handleVideoMount(el);
                                 }}
                                 src={currentItem.src}
-                                className="w-full h-full object-contain max-h-[60vh] md:max-h-full"
+                                className="w-full h-full object-cover pointer-events-none" // Disable pointer events on video to allow drag
                                 playsInline
                                 loop
                                 muted={isMuted}
-                                onClick={toggleVideo}
+                                // Removed onClick directly on video to avoid conflict with drag
                                 onPlay={() => setIsPlaying(true)}
                                 onPause={() => setIsPlaying(false)}
                                 onLoadedMetadata={(e) => {
                                     e.currentTarget.volume = targetVolume;
                                 }}
                             />
-                            {/* Controls Overlay */}
+                            {/* Controls Overlay - Re-enabled pointer events */}
                             <div
-                                className="absolute inset-x-0 bottom-0 p-4 flex justify-end items-end gap-3 z-30 pointer-events-none bg-gradient-to-t from-black/60 to-transparent h-24"
+                                className="absolute inset-x-0 bottom-0 p-4 flex justify-end items-end gap-3 z-30 pointer-events-auto bg-gradient-to-t from-black/60 to-transparent h-24"
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 <motion.button
                                     onClick={toggleMute}
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white hover:text-black transition-colors pointer-events-auto border border-white/10 mb-1"
+                                    className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white hover:text-black transition-colors border border-white/10 mb-1"
                                 >
                                     <AnimatePresence mode="wait" initial={false}>
                                         {isMuted ? (
@@ -182,22 +199,24 @@ export const ProjectMediaCarousel = ({ media, coverImage, title }: ProjectMediaC
                             </div>
 
                             {/* Play Button Overlay */}
-                            {!isPlaying && (
-                                <button
-                                    onClick={toggleVideo}
-                                    className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/10 transition-colors group/video z-10"
-                                >
-                                    <div className="bg-white/10 backdrop-blur-md p-4 rounded-full border border-white/20 group-hover/video:scale-110 transition-transform">
+                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                                {!isPlaying && (
+                                    <button
+                                        onClick={(e) => { e.stopPropagation(); toggleVideo(); }} // Explicit trigger
+                                        className="pointer-events-auto bg-white/10 backdrop-blur-md p-4 rounded-full border border-white/20 hover:scale-110 transition-transform"
+                                    >
                                         <Play fill="white" size={32} />
-                                    </div>
-                                </button>
-                            )}
+                                    </button>
+                                )}
+                            </div>
+
+                            {/* Click layer for pause/play that respects drag checking could be complex, omitting for pure swipe simplicity or adding back if needed */}
                         </div>
                     ) : (
                         <img
                             src={currentItem.src}
                             alt={`${title} - slide ${currentIndex + 1}`}
-                            className="w-full h-full object-contain max-h-[60vh] md:max-h-full"
+                            className="w-full h-full object-cover pointer-events-none select-none"
                         />
                     )}
                 </motion.div>
@@ -208,27 +227,35 @@ export const ProjectMediaCarousel = ({ media, coverImage, title }: ProjectMediaC
                 <>
                     <button
                         onClick={(e) => { e.stopPropagation(); prevSlide(); }}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-white hover:text-black rounded-full backdrop-blur-sm border border-white/10 transition-all opacity-0 group-hover:opacity-100 z-40"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-white hover:text-black rounded-full backdrop-blur-sm border border-white/10 transition-all opacity-0 group-hover:opacity-100 z-40 hidden md:block"
                     >
                         <ChevronLeft size={24} />
                     </button>
                     <button
                         onClick={(e) => { e.stopPropagation(); nextSlide(); }}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-white hover:text-black rounded-full backdrop-blur-sm border border-white/10 transition-all opacity-0 group-hover:opacity-100 z-40"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-white hover:text-black rounded-full backdrop-blur-sm border border-white/10 transition-all opacity-0 group-hover:opacity-100 z-40 hidden md:block"
                     >
                         <ChevronRight size={24} />
                     </button>
 
-                    {/* Dots Indicator - Now clickable! */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-40">
+                    {/* Dots Indicator */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-40 pointer-events-auto">
                         {items.map((_, idx) => (
-                            <button
+                            <motion.button
                                 key={idx}
+                                layout
                                 onClick={(e) => { e.stopPropagation(); goToSlide(idx); }}
-                                className={`w-2.5 h-2.5 rounded-full transition-all duration-200 hover:scale-125 ${idx === currentIndex
-                                        ? 'bg-white scale-110'
-                                        : 'bg-white/30 hover:bg-white/60'
-                                    }`}
+                                className={`h-2 rounded-full backdrop-blur-sm transition-colors border border-black/10`}
+                                initial={false}
+                                animate={{
+                                    width: idx === currentIndex ? 24 : 8,
+                                    backgroundColor: idx === currentIndex ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0.3)",
+                                }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 400,
+                                    damping: 30
+                                }}
                                 aria-label={`Go to slide ${idx + 1}`}
                             />
                         ))}
