@@ -327,8 +327,8 @@ export default function Home() {
                         >
                             <TextShuffle
                                 text={language === 'it'
-                                    ? 'Sono uno sviluppatore guidato dalla passione per la creazione di meccaniche che funzionano alla perfezione. La mia competenza spazia dalla grafica 3D alla realtà virtuale, con una forte specializzazione nello sviluppo iOS nativo.'
-                                    : 'I am a developer driven by the passion for creating mechanics that work flawlessly. My expertise spans from 3D graphics to virtual reality, with a strong specialization in native iOS development.'
+                                    ? 'Sono uno sviluppatore guidato dalla passione per la creazione di meccaniche che funzionano alla perfezione. La mia competenza spazia dalla grafica 3D alla realtà virtuale, con una forte specializzazione nello sviluppo iOS.'
+                                    : 'I am a developer driven by the passion for creating mechanics that work flawlessly. My expertise spans from 3D graphics to virtual reality, with a strong specialization in iOS development.'
                                 }
                                 trigger={isChanging}
                                 duration={500}
@@ -341,8 +341,8 @@ export default function Home() {
                         >
                             <TextShuffle
                                 text={language === 'it'
-                                    ? 'Il mio approccio fonde rigore ingegneristico e visione artistica per trasformare concetti complessi in interfacce intuitive e coinvolgenti.'
-                                    : 'My approach blends engineering rigor with artistic vision to transform complex concepts into intuitive and engaging interfaces.'
+                                    ? 'Trasformo requisiti tecnici complessi in soluzioni concrete, ottimizzando ogni dettaglio per garantire performance e semplicità d’uso.'
+                                    : 'I transform complex technical requirements into concrete solutions, optimizing every detail to ensure performance and ease of use.'
                                 }
                                 trigger={isChanging}
                                 duration={500}

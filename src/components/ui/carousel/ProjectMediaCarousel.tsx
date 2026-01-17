@@ -67,13 +67,16 @@ export const ProjectMediaCarousel = ({ media, coverImage, title }: ProjectMediaC
     // Fade volume utility (non-blocking, only for smooth audio transitions)
     const fadeVolume = (el: HTMLVideoElement, target: number, duration: number, callback?: () => void) => {
         const startVolume = el.volume;
+        const clampedTarget = Math.max(0, Math.min(1, target));
         const startTime = performance.now();
 
         const animate = (currentTime: number) => {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
 
-            el.volume = startVolume + (target - startVolume) * progress;
+            // Clamp volume to valid range [0, 1]
+            const newVolume = startVolume + (clampedTarget - startVolume) * progress;
+            el.volume = Math.max(0, Math.min(1, newVolume));
 
             if (progress < 1) {
                 requestAnimationFrame(animate);
@@ -119,7 +122,7 @@ export const ProjectMediaCarousel = ({ media, coverImage, title }: ProjectMediaC
     };
 
     return (
-        <div className="relative w-full h-full bg-black group touch-pan-y">
+        <div className="relative w-full h-full bg-black group touch-pan-y overflow-hidden">
             {/* Media Content - Using crossfade instead of wait for smoother transitions */}
             <AnimatePresence mode="popLayout" initial={false}>
                 <motion.div
@@ -150,7 +153,7 @@ export const ProjectMediaCarousel = ({ media, coverImage, title }: ProjectMediaC
                                     handleVideoMount(el);
                                 }}
                                 src={currentItem.src}
-                                className="w-full h-full object-cover pointer-events-none" // Disable pointer events on video to allow drag
+                                className="w-full h-full object-contain pointer-events-none" // Disable pointer events on video to allow drag
                                 playsInline
                                 loop
                                 muted={isMuted}
@@ -216,7 +219,7 @@ export const ProjectMediaCarousel = ({ media, coverImage, title }: ProjectMediaC
                         <img
                             src={currentItem.src}
                             alt={`${title} - slide ${currentIndex + 1}`}
-                            className="w-full h-full object-cover pointer-events-none select-none"
+                            className="w-full h-full object-contain pointer-events-none select-none"
                         />
                     )}
                 </motion.div>
