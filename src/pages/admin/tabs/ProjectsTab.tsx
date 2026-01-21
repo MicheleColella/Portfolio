@@ -105,17 +105,40 @@ export default function ProjectsTab() {
         }
     };
 
+    // Helper function to remove undefined values from an object (Firestore doesn't accept undefined)
+    const removeUndefined = (obj: Record<string, unknown>): Record<string, unknown> => {
+        const cleaned: Record<string, unknown> = {};
+        for (const key in obj) {
+            const value = obj[key];
+            if (value === undefined) {
+                continue; // Skip undefined values
+            } else if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
+                cleaned[key] = removeUndefined(value as Record<string, unknown>);
+            } else if (Array.isArray(value)) {
+                cleaned[key] = value.map(item =>
+                    item !== null && typeof item === 'object' && !Array.isArray(item)
+                        ? removeUndefined(item as Record<string, unknown>)
+                        : item
+                ).filter(item => item !== undefined);
+            } else {
+                cleaned[key] = value;
+            }
+        }
+        return cleaned;
+    };
+
     const handleSave = async () => {
         if (!editingProject) return;
 
         setSaving(true);
         try {
             const docRef = doc(db, 'projects', String(editingProject.id));
+            const cleanedData = removeUndefined(editingProject as unknown as Record<string, unknown>);
 
             if (isCreating) {
-                await setDoc(docRef, editingProject);
+                await setDoc(docRef, cleanedData);
             } else {
-                await setDoc(docRef, editingProject, { merge: true });
+                await setDoc(docRef, cleanedData, { merge: true });
             }
 
             setEditingProject(null);
