@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { TechSkill } from '@/types/portfolio';
+import { TechLogo } from './TechLogo';
 
 interface TechCategory {
     category: string;
-    skills: string[];
+    skills: TechSkill[] | string[];
 }
 
 interface TechTabsProps {
@@ -22,8 +24,8 @@ export default function TechTabs({ categories }: TechTabsProps) {
                         key={idx}
                         onClick={() => setActiveIndex(idx)}
                         className={`relative px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ${activeIndex === idx
-                                ? 'text-white'
-                                : 'text-zinc-500 hover:text-zinc-300'
+                            ? 'text-white'
+                            : 'text-zinc-500 hover:text-zinc-300'
                             }`}
                     >
                         {activeIndex === idx && (
@@ -53,17 +55,24 @@ export default function TechTabs({ categories }: TechTabsProps) {
                             {categories[activeIndex].category}
                         </h4>
                         <div className="flex flex-wrap gap-3">
-                            {categories[activeIndex].skills.map((skill, idx) => (
-                                <motion.span
-                                    key={skill}
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: idx * 0.05 }}
-                                    className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-zinc-300 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200"
-                                >
-                                    {skill}
-                                </motion.span>
-                            ))}
+                            {categories[activeIndex].skills.map((skill, idx) => {
+                                const isObject = typeof skill === 'object' && skill !== null;
+                                const name = isObject ? (skill as TechSkill).name : (skill as string);
+                                const icon = isObject ? (skill as TechSkill).icon : null;
+
+                                return (
+                                    <motion.span
+                                        key={name}
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ delay: idx * 0.05 }}
+                                        className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-zinc-300 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200 flex items-center gap-2"
+                                    >
+                                        {icon && <TechLogo name={icon} className="w-4 h-4" />}
+                                        {name}
+                                    </motion.span>
+                                );
+                            })}
                         </div>
                     </motion.div>
                 </AnimatePresence>

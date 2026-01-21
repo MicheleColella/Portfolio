@@ -1,109 +1,121 @@
 
-import { useMemo } from 'react';
-import { useTranslation } from '@/i18n';
-import { Award, Globe, Shield, Cpu, Box } from "lucide-react";
+import { useState, useEffect } from 'react';
+import { db } from '@/lib/firebase';
+import { doc, collection, onSnapshot, query, orderBy } from 'firebase/firestore';
+import {
+    ProfileData,
+    TimelineItem,
+    TechCategory,
+    Certification
+} from '@/types/portfolio';
+
+export interface LogoLoopItem {
+    id: string;
+    name: string;      // Nome del logo (usato come slug in Tech Stack)
+    imageUrl: string;  // URL dell'immagine su Firebase Storage
+    order: number;
+}
 
 export const usePortfolioData = () => {
-    const { t } = useTranslation();
+    const [profile, setProfile] = useState<ProfileData | null>(null);
+    const [timelineData, setTimelineData] = useState<TimelineItem[]>([]);
+    const [techStackData, setTechStackData] = useState<TechCategory[]>([]);
+    const [certificationsData, setCertificationsData] = useState<Certification[]>([]);
+    const [logoLoopData, setLogoLoopData] = useState<LogoLoopItem[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    const timelineData = useMemo(() => [
-        {
-            year: "2026",
-            type: "edu",
-            title: t('timelineDegreeTitle'),
-            subtitle: t('timelineDegreeSubtitle'),
-            note: t('timelineInProgress'),
-            details: t('timelineDegreeDetails')
-        },
-        {
-            year: "2024",
-            type: "work",
-            title: t('timelineFreelanceTitle'),
-            subtitle: t('timelineFreelanceSubtitle'),
-            note: t('timelineFreelanceNote'),
-            details: t('timelineFreelanceDetails')
-        },
-        {
-            year: "2024",
-            type: "edu",
-            title: t('timelineAcademyTitle'),
-            subtitle: t('timelineAcademySubtitle'),
-            note: t('timelineAcademyNote'),
-            details: t('timelineAcademyDetails')
-        },
-        {
-            year: "2022",
-            type: "edu",
-            title: t('timelineDiplomaTitle'),
-            subtitle: t('timelineDiplomaSubtitle'),
-            note: null,
-            details: t('timelineDiplomaDetails')
-        },
-        {
-            year: "2021",
-            type: "work",
-            title: t('timelineDataTitle'),
-            subtitle: t('timelineDataSubtitle'),
-            note: t('timelineDataNote'),
-            details: t('timelineDataDetails')
-        },
-    ], [t]);
+    useEffect(() => {
+        setLoading(true);
 
-    const techStackData = useMemo(() => [
-        {
-            category: t('techMobile'),
-            skills: ["Swift", "SwiftUI", "iOS SDK", "React Native", "UIKit"]
-        },
-        {
-            category: t('techGameDev'),
-            skills: ["Unity", "C#", "XR", "OpenGL", "Physics", "3D Integration"]
-        },
-        {
-            category: t('techWeb'),
-            skills: ["React", "TypeScript", "Tailwind", "Node.js", "Three.js"]
-        },
-        {
-            category: t('techBackend'),
-            skills: ["Python", "SQL", "Firebase", "REST APIs", "Git"]
-        },
-        {
-            category: t('techDesign'),
-            skills: ["Figma", "Blender", "UI/UX", "System Design", "Agile"]
-        }
-    ], [t]);
+        // 1. Profile Listener
+        const unsubProfile = onSnapshot(doc(db, 'profile', 'main'),
+            (doc) => {
+                if (doc.exists()) {
+                    setProfile(doc.data() as ProfileData);
+                }
+                setLoading(false);
+            },
+            (error) => {
+                console.error("Profile listen error:", error);
+                setLoading(false);
+            }
+        );
 
-    const certificationsData = useMemo(() => [
-        {
-            id: 1,
-            title: t('certEnglishTitle'),
-            description: t('certEnglishDesc'),
-            icon: <Globe size={20} className="carousel-icon" />
-        },
-        {
-            id: 2,
-            title: t('certEirsafTitle'),
-            description: t('certEirsafDesc'),
-            icon: <Award size={20} className="carousel-icon" />
-        },
-        {
-            id: 3,
-            title: t('certEipassTitle'),
-            description: t('certEipassDesc'),
-            icon: <Shield size={20} className="carousel-icon" />
-        },
-        {
-            id: 4,
-            title: t('certRoboticsTitle'),
-            description: t('certRoboticsDesc'),
-            icon: <Cpu size={20} className="carousel-icon" />
-        },
-        {
-            id: 5,
-            title: t('cert3DPrintingTitle'),
-            description: t('cert3DPrintingDesc'),
-            icon: <Box size={20} className="carousel-icon" />
-        }
-    ], [t]);
+        // 2. Timeline Listener
+        const qTimeline = query(collection(db, 'experience'), orderBy('order', 'asc'));
+        const unsubTimeline = onSnapshot(qTimeline,
+            (snapshot) => {
+                const items: TimelineItem[] = [];
+                snapshot.forEach((doc) => {
+                    items.push({ id: doc.id, ...doc.data() } as TimelineItem);
+                });
+                setTimelineData(items);
+            },
+            (error) => {
+                console.error("Timeline listen error:", error);
+            }
+        );
 
-    return { timelineData, techStackData, certificationsData };
+        // 3. Tech Stack Listener
+        const qTech = query(collection(db, 'tech_stack'), orderBy('order', 'asc'));
+        const unsubTech = onSnapshot(qTech,
+            (snapshot) => {
+                const items: TechCategory[] = [];
+                snapshot.forEach((doc) => {
+                    items.push({ id: doc.id, ...doc.data() } as TechCategory);
+                });
+                setTechStackData(items);
+            },
+            (error) => {
+                console.error("TechStack listen error:", error);
+            }
+        );
+
+        // 4. Certifications Listener
+        const unsubCerts = onSnapshot(collection(db, 'certifications'),
+            (snapshot) => {
+                const items: Certification[] = [];
+                snapshot.forEach((doc) => {
+                    items.push({ id: doc.id, ...doc.data() } as Certification);
+                });
+                setCertificationsData(items);
+            },
+            (error) => {
+                console.error("Certifications listen error:", error);
+            }
+        );
+
+        // 5. Logo Loop Listener
+        const qLogos = query(collection(db, 'logo_loop'), orderBy('order', 'asc'));
+        const unsubLogos = onSnapshot(qLogos,
+            (snapshot) => {
+                const items: LogoLoopItem[] = [];
+                snapshot.forEach((doc) => {
+                    items.push({ id: doc.id, ...doc.data() } as LogoLoopItem);
+                });
+                setLogoLoopData(items);
+            },
+            (error) => {
+                console.error("Logo loop listen error:", error);
+            }
+        );
+
+        // Cleanup
+        return () => {
+            unsubProfile();
+            unsubTimeline();
+            unsubTech();
+            unsubCerts();
+            unsubLogos();
+        };
+    }, []);
+
+    return {
+        profile,
+        timelineData,
+        techStackData,
+        certificationsData,
+        logoLoopData,
+        loading
+    };
 };

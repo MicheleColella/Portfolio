@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useMemo } from "react";
-import projectsData from "@/data/projects.json";
-import { Github, Linkedin, Mail, MapPin, ChevronDown } from "lucide-react";
+import { useProjects } from "@/hooks/useProjects";
+import { Github, Linkedin, Mail, MapPin, ChevronDown, Globe, Award, Shield, Cpu, Box, Database } from "lucide-react";
 
 // ReactBits Components
 import Squares from "@/components/backgrounds/Squares";
@@ -22,11 +22,12 @@ import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { SocialBtn } from "@/components/ui/SocialBtn";
 import { StatBox } from "@/components/ui/StatBox";
-import { techLogos } from "@/data/constants";
+import { TechLogo } from "@/components/ui/TechLogo";
 import { usePortfolioData } from "@/hooks/usePortfolioData";
 
 // i18n
 import { useTranslation } from "@/i18n";
+import { BilingualText } from "@/types/portfolio";
 
 // Type for bilingual projects
 interface BilingualProject {
@@ -44,14 +45,14 @@ interface BilingualProject {
     media: Array<{ type: string; src: string; duration: number; volume?: number }>;
 }
 
-// Tech stack logo component (B/W only)
-
-
-
-
-
-
-
+// Icon mapper for certifications
+const iconMap: Record<string, React.ReactNode> = {
+    globe: <Globe size={20} className="carousel-icon" />,
+    award: <Award size={20} className="carousel-icon" />,
+    shield: <Shield size={20} className="carousel-icon" />,
+    cpu: <Cpu size={20} className="carousel-icon" />,
+    box: <Box size={20} className="carousel-icon" />
+};
 
 // Animation Variants
 const fadeInUp = {
@@ -70,31 +71,49 @@ const staggerContainer = {
     }
 };
 
-
-
-
-
 export default function Home() {
     const { t, language, isChanging } = useTranslation();
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [selectedProject, setSelectedProject] = useState<BilingualProject | null>(null);
     const [expandedTimeline, setExpandedTimeline] = useState<number | null>(null);
-    const isAvailable = true;
 
-    // Data hooks
-    const { timelineData, techStackData, certificationsData } = usePortfolioData();
+    // Data hooks - Firebase integration
+    const { projects } = useProjects();
+    const { profile, timelineData, techStackData, certificationsData, logoLoopData, loading } = usePortfolioData();
 
-    // Cast projects data to typed array
-    const projects = projectsData as BilingualProject[];
+    // Dynamic tech logos from Firebase, fallback to hardcoded if empty
+    const techLogos = useMemo(() => {
+        if (logoLoopData.length > 0) {
+            return logoLoopData.map(item => ({
+                node: (
+                    <img
+                        src={item.imageUrl}
+                        alt={item.name}
+                        className="w-12 h-12 object-contain filter brightness-0 invert opacity-70"
+                    />
+                )
+            }));
+        }
+        // Fallback to common defaults if no data in Firebase
+        return ['swift', 'unity', 'csharp', 'react', 'typescript', 'python', 'firebase', 'figma', 'git']
+            .map(slug => ({ node: <TechLogo name={slug} className="w-12 h-12" /> }));
+    }, [logoLoopData]);
 
     // Helper to get localized text from bilingual object
-    const getLocalizedText = (obj: { it: string; en: string }): string => obj[language as 'it' | 'en'];
+    const getLocalizedText = (obj: BilingualText | undefined | null): string => {
+        if (!obj) return "";
+        return obj[language as 'it' | 'en'];
+    };
 
-    const categoryOptions = useMemo(() => Array.from(new Set(projects.flatMap(p => p.categories))), [projects]);
+    const categoryOptions = useMemo(() => {
+        if (!projects) return [];
+        return Array.from(new Set(projects.flatMap(p => p.categories || [])));
+    }, [projects]);
+
     const filteredProjects = useMemo(() => {
-        let result = projects;
+        let result = projects || [];
         if (selectedCategory !== null) {
-            result = projects.filter(p => p.categories.includes(selectedCategory));
+            result = result.filter(p => p.categories && p.categories.includes(selectedCategory));
         }
         // Ordina dal più giovane (data alta) al più vecchio (data bassa)
         return [...result].sort((a, b) => new Date(b.sortDate).getTime() - new Date(a.sortDate).getTime());
@@ -103,6 +122,36 @@ export default function Home() {
     const scrollToSection = (id: string) => {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     };
+
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-[#050505] flex items-center justify-center">
+                <div className="animate-spin w-8 h-8 border-2 border-white/20 border-t-white rounded-full" />
+            </div>
+        );
+    }
+
+    if (!profile) {
+        // ... (setup required UI)
+        return (
+            <div className="min-h-screen bg-[#050505] text-white flex flex-col items-center justify-center p-8 z-50 relative">
+                {/* ... setup required content ... */}
+                <div className="relative z-10 text-center max-w-lg bg-zinc-900/80 p-8 rounded-2xl border border-white/10 backdrop-blur-md">
+                    <Database className="w-16 h-16 mx-auto mb-6 text-zinc-500" />
+                    <h1 className="text-3xl font-bold mb-4">Setup Required</h1>
+                    <p className="text-zinc-400 mb-8">
+                        Portfolio data is missing. Please run the migration script in your terminal to populate the database:
+                    </p>
+                    <div className="bg-black/50 p-4 rounded-lg font-mono text-sm text-blue-400 mb-6 select-text">
+                        npx vite-node src/scripts/migrateDetails.ts
+                    </div>
+                    <a href="/admin" className="text-sm text-zinc-500 hover:text-white transition-colors underline">
+                        Go to Admin Login
+                    </a>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-[#050505] text-white relative overflow-x-hidden">
@@ -163,7 +212,7 @@ export default function Home() {
                                     </h1>
                                     <div className="text-lg md:text-xl text-zinc-400 max-w-xl leading-relaxed mb-6 mx-auto lg:mx-0 h-8">
                                         <RotatingText
-                                            texts={["iOS Developer", "XR Developer", "3D Modeler", "Unity Developer", "Full Stack Developer"]}
+                                            texts={profile.roles || ["Developer"]}
                                             className="text-white font-semibold inline-block"
                                             staggerDuration={0.025}
                                             rotationInterval={3000}
@@ -171,7 +220,7 @@ export default function Home() {
                                     </div>
                                     <p className="text-lg md:text-xl text-zinc-400 max-w-xl leading-relaxed mb-10 mx-auto lg:mx-0">
                                         <TextShuffle
-                                            text={t('heroDescription')}
+                                            text={getLocalizedText(profile.bio?.long) || getLocalizedText(profile.bio?.short) || "Welcome to my portfolio."}
                                             trigger={isChanging}
                                             duration={400}
                                         />
@@ -184,12 +233,16 @@ export default function Home() {
                                         >
                                             <TextShuffle text={t('heroCTA')} trigger={isChanging} duration={300} /> <ChevronDown size={20} />
                                         </button>
-                                        <a href="https://github.com/MicheleColella" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-zinc-200 transition-all hover:scale-105 active:scale-95">
-                                            <Github size={20} /> GitHub
-                                        </a>
-                                        <a href="https://www.linkedin.com/in/michele-colella-68b468273/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-zinc-200 transition-all hover:scale-105 active:scale-95">
-                                            <Linkedin size={20} /> LinkedIn
-                                        </a>
+                                        {profile.socials?.github && (
+                                            <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-zinc-200 transition-all hover:scale-105 active:scale-95">
+                                                <Github size={20} /> GitHub
+                                            </a>
+                                        )}
+                                        {profile.socials?.linkedin && (
+                                            <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-zinc-200 transition-all hover:scale-105 active:scale-95">
+                                                <Linkedin size={20} /> LinkedIn
+                                            </a>
+                                        )}
                                     </div>
                                 </motion.div>
                             </div>
@@ -212,7 +265,7 @@ export default function Home() {
                                             {/* Profile Photo */}
                                             <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white/10 mb-8 shadow-2xl">
                                                 <img
-                                                    src="profile.png"
+                                                    src={profile.image}
                                                     alt="Michele Colella"
                                                     className="w-full h-full object-cover"
                                                 />
@@ -221,7 +274,7 @@ export default function Home() {
                                             {/* Info */}
                                             <h3 className="font-bold text-2xl">Michele Colella</h3>
                                             <p className="text-sm text-zinc-500 mt-2 flex items-center gap-1">
-                                                <MapPin size={14} /> <TextShuffle text={t('profileLocation')} trigger={isChanging} duration={300} />
+                                                <MapPin size={14} /> <TextShuffle text={getLocalizedText(profile.location)} trigger={isChanging} duration={300} />
                                             </p>
                                         </div>
 
@@ -232,17 +285,17 @@ export default function Home() {
                                                 return `${Math.floor(count / 5) * 5}+`;
                                             })()} />
                                             <StatBox label={t('profileExperience')} trigger={isChanging} value={(() => {
-                                                const startYear = Math.min(...timelineData.map(item => parseInt(item.year)));
+                                                const startYear = Math.min(...timelineData.map(item => parseInt(item.year) || 2026));
                                                 const currentYear = new Date().getFullYear();
                                                 const years = currentYear - startYear;
-                                                if (years < 5) return `${years} ${t('profileYears')}`;
-                                                return `${Math.floor(years / 5) * 5}+ ${t('profileYears')}`;
+                                                if (years < 1) return `1 ${t('profileYears')}`;
+                                                return `${years}+ ${t('profileYears')}`;
                                             })()} />
                                         </div>
                                     </div>
                                 </TiltedCard>
 
-                                {isAvailable && (
+                                {profile.available && (
                                     <div className="relative group">
                                         <div className="absolute -inset-0.5 bg-emerald-500/20 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
                                         <motion.div
@@ -256,7 +309,7 @@ export default function Home() {
                                             </h3>
 
                                             <a
-                                                href="mailto:michelecolella0@gmail.com"
+                                                href={`mailto:${profile.socials.email}`}
                                                 className="w-full h-11 flex items-center justify-center gap-2 bg-emerald-500 text-black text-sm font-bold rounded-xl hover:bg-emerald-400 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-emerald-500/20"
                                             >
                                                 <Mail size={16} strokeWidth={2.5} />
@@ -301,7 +354,7 @@ export default function Home() {
                         <div className="w-24 h-[2px] bg-white/20"></div>
                     </motion.div>
 
-                    {/* Narrative Text */}
+                    {/* Narrative Text - Using Bio Data */}
                     <motion.div
                         className="mb-32 max-w-3xl"
                         initial="hidden"
@@ -315,7 +368,7 @@ export default function Home() {
                             transition={{ duration: 0.6 }}
                         >
                             <TextShuffle
-                                text={language === 'it' ? 'Costruisco esperienze digitali che funzionano.' : 'I build digital experiences that work.'}
+                                text={getLocalizedText(profile.bio.title)}
                                 trigger={isChanging}
                                 duration={400}
                             />
@@ -326,10 +379,7 @@ export default function Home() {
                             transition={{ duration: 0.6 }}
                         >
                             <TextShuffle
-                                text={language === 'it'
-                                    ? 'Sono uno sviluppatore guidato dalla passione per la creazione di meccaniche che funzionano alla perfezione. La mia competenza spazia dalla grafica 3D alla realtà virtuale, con una forte specializzazione nello sviluppo iOS.'
-                                    : 'I am a developer driven by the passion for creating mechanics that work flawlessly. My expertise spans from 3D graphics to virtual reality, with a strong specialization in iOS development.'
-                                }
+                                text={getLocalizedText(profile.bio.short)}
                                 trigger={isChanging}
                                 duration={500}
                             />
@@ -340,17 +390,14 @@ export default function Home() {
                             transition={{ duration: 0.6 }}
                         >
                             <TextShuffle
-                                text={language === 'it'
-                                    ? 'Trasformo requisiti tecnici complessi in soluzioni concrete, ottimizzando ogni dettaglio per garantire performance e semplicità d’uso.'
-                                    : 'I transform complex technical requirements into concrete solutions, optimizing every detail to ensure performance and ease of use.'
-                                }
+                                text={getLocalizedText(profile.bio.long)}
                                 trigger={isChanging}
                                 duration={500}
                             />
                         </motion.p>
                     </motion.div>
 
-                    {/* Timeline - Single Column, Unified */}
+                    {/* Timeline */}
                     <motion.div
                         className="mb-32"
                         initial="hidden"
@@ -375,8 +422,15 @@ export default function Home() {
                             <div className="space-y-32">
                                 {timelineData.map((item, index) => (
                                     <TimelineCard
-                                        key={index}
-                                        item={item}
+                                        key={item.id}
+                                        item={{
+                                            year: item.year,
+                                            type: item.type,
+                                            title: getLocalizedText(item.title),
+                                            subtitle: getLocalizedText(item.subtitle),
+                                            note: getLocalizedText(item.note),
+                                            details: getLocalizedText(item.details)
+                                        }}
                                         index={index}
                                         isExpanded={expandedTimeline === index}
                                         onToggle={() => setExpandedTimeline(expandedTimeline === index ? null : index)}
@@ -386,7 +440,7 @@ export default function Home() {
                         </div>
                     </motion.div>
 
-                    {/* Tech Stack - Stacked Cards */}
+                    {/* Tech Stack */}
                     <motion.div
                         className="mb-24"
                         initial="hidden"
@@ -402,7 +456,10 @@ export default function Home() {
                             <TextShuffle text={t('sectionTechStack')} trigger={isChanging} duration={300} as="span" />
                         </motion.h3>
 
-                        <TechTabs categories={techStackData} />
+                        <TechTabs categories={techStackData.map(c => ({
+                            category: getLocalizedText(c.title),
+                            skills: c.skills
+                        }))} />
                     </motion.div>
 
                     {/* Certifications - Carousel */}
@@ -423,7 +480,12 @@ export default function Home() {
                             variants={fadeInUp}
                         >
                             <Carousel
-                                items={certificationsData}
+                                items={certificationsData.map((c, idx) => ({
+                                    id: idx, // or c.id if number
+                                    title: getLocalizedText(c.title),
+                                    description: getLocalizedText(c.description),
+                                    icon: iconMap[c.icon] || <Globe size={20} className="carousel-icon" />
+                                }))}
                                 baseWidth={320}
                                 autoplay={true}
                                 autoplayDelay={4000}
@@ -498,12 +560,12 @@ export default function Home() {
                             <TextShuffle text={language === 'it' ? 'COLLABORIAMO' : "LET'S COLLABORATE"} trigger={isChanging} duration={400} />
                         </h2>
                         <div className="flex gap-6 justify-center flex-wrap">
-                            <SocialBtn icon={<Mail size={18} />} label="michelecolella0@gmail.com" href="mailto:michelecolella0@gmail.com" />
-                            <SocialBtn icon={<Github size={18} />} label="GitHub" href="https://github.com/MicheleColella" />
-                            <SocialBtn icon={<Linkedin size={18} />} label="LinkedIn" href="https://www.linkedin.com/in/michele-colella-68b468273/" />
+                            <SocialBtn icon={<Mail size={18} />} label={profile.socials.email} href={`mailto:${profile.socials.email}`} />
+                            <SocialBtn icon={<Github size={18} />} label="GitHub" href={profile.socials.github} />
+                            <SocialBtn icon={<Linkedin size={18} />} label="LinkedIn" href={profile.socials.linkedin} />
                         </div>
                         <p className="text-zinc-600 mt-8 flex items-center justify-center gap-2 text-sm">
-                            <MapPin size={14} /> <TextShuffle text={t('profileLocation')} trigger={isChanging} duration={300} />
+                            <MapPin size={14} /> <TextShuffle text={getLocalizedText(profile.location)} trigger={isChanging} duration={300} />
                         </p>
                     </div>
                     <p className="absolute bottom-8 text-zinc-700 font-mono text-xs">

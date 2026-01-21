@@ -157,7 +157,6 @@ export const ProjectMediaCarousel = ({ media, coverImage, title }: ProjectMediaC
                                 playsInline
                                 loop
                                 muted={isMuted}
-                                // Removed onClick directly on video to avoid conflict with drag
                                 onPlay={() => setIsPlaying(true)}
                                 onPause={() => setIsPlaying(false)}
                                 onLoadedMetadata={(e) => {
