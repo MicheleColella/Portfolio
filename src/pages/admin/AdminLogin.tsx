@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { useAdminAuth } from '@/context/AdminAuthContext';
 import { Lock, Mail, AlertCircle } from 'lucide-react';
 
@@ -104,9 +105,9 @@ export default function AdminLogin() {
                     </form>
 
                     <div className="mt-6 text-center">
-                        <a href="/" className="text-zinc-500 text-sm hover:text-white transition-colors">
+                        <Link to="/" className="text-zinc-500 text-sm hover:text-white transition-colors">
                             ← Torna al Portfolio
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </motion.div>
